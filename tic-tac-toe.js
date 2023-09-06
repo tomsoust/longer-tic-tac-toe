@@ -5,6 +5,10 @@ console.log('pirate tic tac toe');
 const playerText = document.querySelector('.play-text')
 const restartBtn = document.querySelector('.restart-btn')
 const boxes = Array.from(document.getElementsByClassName('box'))
+const playerXWins = document.getElementById("playerXWins");
+const playerOWins = document.getElementById("playerOWins");
+const draws = document.getElementById("draws");
+
 
 // setting player variables
 const O_Text = 'O'
@@ -37,6 +41,11 @@ function handleClick(evt) {
   }
 }
 
+function updateScoreboard() {
+  playerXWins.textContent = playerXWins;
+  playerOWins.textContent = playerOWins;
+  draws.textContent = draws;
+}
 const winningCombo = [
   [0, 1, 2],
   [3, 4, 5],
@@ -61,6 +70,7 @@ function playerWins() {
   }
   return false
 }
+// check if spaces.fill = true
 
 function handleRestart() {
   spaces.fill(null)

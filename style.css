@@ -40,9 +40,3 @@
   flex-direction: column;
   background-color: cornflowerblue;
 }
-#playerOWins {
-  justify-content: right;
-}
-#playerXWins {
-  justify-content: left;
-}
