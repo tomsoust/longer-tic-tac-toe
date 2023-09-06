@@ -3,7 +3,7 @@ console.log('pirate tic tac toe');
 
 // setting global variables
 const playerText = document.querySelector('.play-text')
-const RestartBtn = document.querySelector('.restart-btn')
+const restartBtn = document.querySelector('.restart-btn')
 const boxes = Array.from(document.getElementsByClassName('box'))
 
 // setting player variables
@@ -15,23 +15,22 @@ let spaces = Array(9).fill(null)
 
 // setting event listeners
 const startGame = () => {
-  boxes.forEach(box => box.addEventListener('click', handleBox))
+  boxes.forEach(box => box.addEventListener('click', handleClick))
 }
-RestartBtn.addEventListener('click', handleRestart)
+restartBtn.addEventListener('click', handleRestart)
 
 
 // utility functions
-function handleBox(evt) {
+function handleClick(evt) {
   const id = evt.target.id
   if(!spaces[id]){
     spaces[id] = currentPlayer
     evt.target.innerText = currentPlayer
 
     if (playerWins()) {
-      playerText = `player ${currentPlayer} has won`
+      playerText.innerText = `Player ${currentPlayer} has won`
       
       return
-      
     }
 
     currentPlayer = currentPlayer == X_Text ? O_Text : X_Text
@@ -49,13 +48,16 @@ const winningCombo = [
   [2, 4, 6]
 ]
 
+
 function playerWins() {
   for (let winner of winningCombo) {
     let [a, b, c] = winner
 
     if(spaces[a] && (spaces[a] === spaces[b] && spaces[a] === spaces[c])) {
       return [a, b, c]
-    }
+    
+    } 
+      
   }
   return false
 }
@@ -67,8 +69,7 @@ function handleRestart() {
     box.innerText = ''
   })
 
-  playerText = 'Pirate Tic Tac Toe'
-
+  playerText.innerText = 'Pirate Tic Tac Toe'
   currentPlayer = X_Text
 }
 
