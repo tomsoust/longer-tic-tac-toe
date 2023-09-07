@@ -42,9 +42,9 @@ function handleClick(evt) {
 }
 
 function updateScoreboard() {
-  playerXWins.textContent = playerXWins;
-  playerOWins.textContent = playerOWins;
-  draws.textContent = draws;
+  playerXWins.innerText = playerXWins;
+  playerOWins.innerText = playerOWins;
+  draws.innerText = draws;
 }
 const winningCombo = [
   [0, 1, 2],
