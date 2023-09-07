@@ -45,7 +45,8 @@ function handleClick(evt) {
       return
     } else if (moves === 9) {
       playerText.innerText = `It's a draw!`
-    }
+      checkDraw()
+    } 
 
     currentPlayer = currentPlayer == X_Text ? O_Text : X_Text
   }
