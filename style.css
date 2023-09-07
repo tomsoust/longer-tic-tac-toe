@@ -54,3 +54,13 @@ body {
   background-color: darkcyan;
   font-family: 'Cinzel Decorative', cursive;
 }
+
+.column {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .column {
+    width: 50%;
+  }
+}

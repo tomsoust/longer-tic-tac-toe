@@ -33,4 +33,4 @@ I'm happy with the functionality of this game so far. It serves it's purpose wel
 Future features
 I would also like to add a fun feature (this is where the pirate part comes in) that on a players fourth turn, their first turn is removed from the board. On their fifth turn, their second turn is moved from the board. This will mean the game can go for much longer and there cannot be draw. Just how pirates like it!
 
-
+I would also like to add a player vs computer mode. This will also come as I learn more. I don't want the computers choice to be random so that will take some planning.
