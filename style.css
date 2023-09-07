@@ -30,6 +30,7 @@
   transition: 200ms;
   font-weight: 600;
   cursor: pointer;
+  font-family: 'UnifrakturMaguntia', cursive;
 }
 
 .container {
@@ -43,4 +44,5 @@
 
 body {
   background-color: darkcyan;
+  font-family: 'Cinzel Decorative', cursive;
 }
