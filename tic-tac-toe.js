@@ -76,9 +76,9 @@ function playerWins() {
 
     if(spaces[a] && (spaces[a] === spaces[b] && spaces[a] === spaces[c])) {
       if (spaces[a] === X_Text) {
-        playerXScore++; // Increment X's score
+        playerXScore++; 
       } else if (spaces[a] === O_Text) {
-        playerOScore++; // Increment O's score
+        playerOScore++; 
       }
       updateScoreboard();
       return [a]
