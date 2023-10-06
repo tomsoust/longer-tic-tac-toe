@@ -40,23 +40,55 @@ const winningCombo = [
 
 let moves = 0
 
-function handleClick(evt) {
-  const id = evt.target.id
-  if(!spaces[id]){
-    spaces[id] = currentPlayer
-    evt.target.innerText = currentPlayer
-    moves++;
+// function handleClick(evt) {
+//   const id = evt.target.id
+//   if(!spaces[id]){
+//     spaces[id] = currentPlayer
+//     evt.target.innerText = currentPlayer
+//     moves++;
 
-    if (playerWins()) {
-      playerText.innerText = `Player ${currentPlayer} has won`
+//     if (playerWins()) {
+//       playerText.innerText = `Player ${currentPlayer} has won`
       
-      return
-    } else if (moves === 9) {
-      playerText.innerText = `It's a draw!`
-      checkDraw()
-    } 
+//       return
+//     } else if (moves === 9) {
+//       playerText.innerText = `It's a draw!`
+//       checkDraw()
+//     } 
 
-    currentPlayer = currentPlayer == X_Text ? O_Text : X_Text
+//     currentPlayer = currentPlayer == X_Text ? O_Text : X_Text
+//   }
+// }
+
+function handleClick(e) {
+  const box = e.target
+  const index = box.dataset.index
+
+  if (spaces[index] !== null || !gameActive) {
+    return
+  }
+
+  moves++
+  spaces[index] = currentPlayer
+  box.innerText = currentPlayer
+
+  checkWin()
+  checkDraw()
+
+  currentPlayer = currentPlayer === X_Text ? O_Text : X_Text
+  playerText.innerText = `${currentPlayer}'s turn`
+}
+
+function checkWin() {
+  for (let i = 0; i < winConditions.length; i++) {
+    const [a, b, c] = winConditions[i]
+    if (spaces[a] === currentPlayer && spaces[b] === currentPlayer && spaces[c] === currentPlayer) {
+      winsScore[currentPlayer]++
+      updateScoreboard()
+      playerText.innerText = `${currentPlayer} wins!`
+      gameActive = false // game ends here
+      return
+    }
   }
 }
 
