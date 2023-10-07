@@ -40,6 +40,9 @@ const winningCombo = [
 
 let moves = 0
 
+const X_Moves = []
+const O_Moves = []
+
 function handleClick(evt) {
   const id = evt.target.id
   if(!spaces[id]){
@@ -49,12 +52,34 @@ function handleClick(evt) {
 
     if (playerWins()) {
       playerText.innerText = `Player ${currentPlayer} has won`
-      
+      if (currentPlayer === X_Text) {
+        X_Moves.push(id)
+      } else {
+        O_Moves.push(id)
+      }
       return
-    } else if (moves === 9) {
+    } else if (moves === 500) {
       playerText.innerText = `It's a draw!`
-      checkDraw()
+      return
     } 
+
+    if (currentPlayer === X_Text) {
+      X_Moves.push(id)
+      if (X_Moves.length >= 4) {
+        const oldestMove = X_Moves.shift()
+        spaces[oldestMove] = null
+        document.getElementById(oldestMove).innerText = ''
+        playerText.innerText = "O's move"
+      }
+    } else {
+      O_Moves.push(id)
+      if (O_Moves.length >= 4) {
+        const oldestMove = O_Moves.shift()
+        spaces[oldestMove] = null
+        document.getElementById(oldestMove).innerText = ''
+        playerText.innerText = "X's move"
+      }
+    }
 
     currentPlayer = currentPlayer == X_Text ? O_Text : X_Text
   }
